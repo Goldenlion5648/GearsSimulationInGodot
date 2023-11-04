@@ -13,7 +13,7 @@ config_version=5
 config/name="Gears4_2"
 run/main_scene="res://tile_map.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://thumbnail.png"
 
 [editor_plugins]
 

@@ -13,40 +13,10 @@ const clockwise := 1
 const counter_clockwise := -1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#tile_set.set("tile_data", [4, 8])
-	print(is_stuck(Vector2i(0,0)))
-	#for cell in get_used_cells(main_layer):
-		#rotation_dfs(cell)
-	#blink_around(Vector2i(4, 4))
-	#get_cell_tile_data()
-	
 	pass
-		#print(get_cell_tile_data(0, pos))
 
 func get_neighbors(cell: Vector2i) -> Array:
-	#print_debug("cells around", cell, "are", get_surrounding_cells(cell))
 	return get_surrounding_cells(cell)
-	#var q = cell.x
-	#var r = cell.y
-	#return [
-		#Vector2i(q, r-1),
-		#Vector2i(q+1, r-1),
-		#Vector2i(q+1, r),
-		#Vector2i(q, r+1),
-		#Vector2i(q-1, r+1),
-		#Vector2i(q-1, r),
-	#]
-	
-#func blink_around(to_blink_around: Vector2i):
-	#var prev = null
-	#while true:
-		#for spot in get_neighbors(to_blink_around):
-			#if prev != null:
-				#erase_cell(main_layer, prev)
-			#set_cell(main_layer, spot, source_id, gear_coords, 0)
-			#prev = spot
-			#await get_tree().create_timer(1).timeout
-		#
 	
 func is_stuck(pos: Vector2i):
 	var last_had_gear = false
@@ -180,9 +150,3 @@ func get_first_existing_neighbor(spot:Vector2i):
 			return neigh
 	return null
 				
-#func _draw() -> void:
-	#for cell in get_used_cells(main_layer):
-		#for touching in get_neighbors(cell):
-			#var other_pos = map_to_local(touching)
-			#draw_line(map_to_local(cell), other_pos, Color.AQUA)
-			#draw_circle(other_pos, 14, Color.DARK_CYAN)
