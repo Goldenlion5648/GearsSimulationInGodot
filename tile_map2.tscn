@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdmbjbaf36iuo"]
+
+[ext_resource type="Texture2D" uid="uid://c65amb1vnxlbu" path="res://gears_tilemap_image.png" id="1_idy4f"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8oone"]
+texture = ExtResource("1_idy4f")
+margins = Vector2i(20, 20)
+texture_region_size = Vector2i(64, 64)
+0:0/next_alternative_id = 3
+0:0/0 = 0
+0:0/2 = 2
+
+[sub_resource type="TileSet" id="TileSet_5s8gx"]
+tile_shape = 3
+sources/0 = SubResource("TileSetAtlasSource_8oone")
+
+[node name="TileMap2" type="TileMap"]
+tile_set = SubResource("TileSet_5s8gx")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 65538, 0, 0)

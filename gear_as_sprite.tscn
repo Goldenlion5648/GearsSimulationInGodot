@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyxdsyt3l0fur"]
+
+[ext_resource type="Shader" path="res://single_gear_rotator.gdshader" id="1_mfoka"]
+[ext_resource type="Texture2D" uid="uid://mdmftyse0es8" path="res://single_gear.png" id="2_1qcgb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c5erh"]
+shader = ExtResource("1_mfoka")
+shader_parameter/gear_color = null
+shader_parameter/counter_clockwise = false
+shader_parameter/rotation_speed_mult = 1.0
+
+[node name="Sprite2D" type="Sprite2D"]
+material = SubResource("ShaderMaterial_c5erh")
+position = Vector2(92, 51)
+texture = ExtResource("2_1qcgb")

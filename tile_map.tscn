@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://bcxb7752arb4i"]
+
+[ext_resource type="Texture2D" uid="uid://c65amb1vnxlbu" path="res://gears_tilemap_image.png" id="1_33ceo"]
+[ext_resource type="Script" path="res://tile_map.gd" id="2_h3tm8"]
+[ext_resource type="Shader" path="res://single_gear_rotator.gdshader" id="2_njvon"]
+[ext_resource type="Texture2D" uid="uid://mdmftyse0es8" path="res://single_gear.png" id="3_6h6qi"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0yco7"]
+texture = ExtResource("1_33ceo")
+margins = Vector2i(20, 20)
+texture_region_size = Vector2i(64, 64)
+0:0/next_alternative_id = 3
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/modulate = Color(0.219608, 0.85098, 0.427451, 1)
+0:0/2 = 2
+1:0/size_in_atlas = Vector2i(3, 3)
+1:0/next_alternative_id = 2
+1:0/0 = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ld5dl"]
+shader = ExtResource("2_njvon")
+shader_parameter/gear_color = Vector3(0, 0.8, 0)
+shader_parameter/counter_clockwise = false
+shader_parameter/rotation_speed_mult = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5asgi"]
+shader = ExtResource("2_njvon")
+shader_parameter/gear_color = Vector3(0, 0.9, 0.8)
+shader_parameter/counter_clockwise = true
+shader_parameter/rotation_speed_mult = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_04avb"]
+shader = ExtResource("2_njvon")
+shader_parameter/gear_color = Vector3(1, 0, 0)
+shader_parameter/counter_clockwise = false
+shader_parameter/rotation_speed_mult = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b3dje"]
+texture = ExtResource("3_6h6qi")
+texture_region_size = Vector2i(64, 64)
+0:0/next_alternative_id = 5
+0:0/0 = 0
+0:0/0/modulate = Color(0.537255, 0.560784, 0.698039, 1)
+0:0/0/material = SubResource("ShaderMaterial_ld5dl")
+0:0/0/custom_data_1 = true
+0:0/1 = 1
+0:0/1/material = SubResource("ShaderMaterial_5asgi")
+0:0/2 = 2
+0:0/2/material = SubResource("ShaderMaterial_04avb")
+0:0/2/custom_data_0 = true
+0:0/4 = 4
+
+[sub_resource type="TileSet" id="TileSet_iygxl"]
+tile_shape = 3
+tile_layout = 3
+tile_offset_axis = 1
+tile_size = Vector2i(64, 58)
+custom_data_layer_0/name = "is_stopped"
+custom_data_layer_0/type = 1
+custom_data_layer_1/name = "rotates_clockwise"
+custom_data_layer_1/type = 1
+custom_data_layer_2/name = "rotation_speed"
+custom_data_layer_2/type = 3
+sources/0 = SubResource("TileSetAtlasSource_0yco7")
+sources/1 = SubResource("TileSetAtlasSource_b3dje")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_iygxl")
+format = 2
+layer_0/tile_data = PackedInt32Array(-131065, 1, 262144, -131064, 1, 262144, -196599, 1, 262144, -196598, 1, 262144, -131062, 1, 262144)
+script = ExtResource("2_h3tm8")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(583, 215)
+zoom = Vector2(1.8, 1.8)
